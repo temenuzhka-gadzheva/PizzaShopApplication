@@ -1,0 +1,44 @@
+﻿
+@model PizzaShop.Core.ViewModels.Categories.EditViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Edit Category";
+}
+
+<h1>Category</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(x => x.Name)
+                @Html.LabelFor(x => x.Name)
+                <input type="text" placeholder="Enter pizza name" name="name" required value="@Html.DisplayFor(x => x.Name, new { @class = "control-label col-md-2" })">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(x => x.Description)
+                @Html.LabelFor(x => x.Description)
+                <input type="text" placeholder="Enter description" name="description" required value="@Html.DisplayFor(x => x.Description, new { @class = "control-label col-md-2" })">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationMessage("summaryError")
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save changes" class="createbtn" />
+            </div>
+        </div>
+    </div>
+}
