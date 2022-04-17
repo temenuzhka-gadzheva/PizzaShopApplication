@@ -1,0 +1,54 @@
+﻿@model PizzaShop.Core.ViewModels.Users.IndexViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Users";
+
+}
+
+<h1>All Users</h1>
+
+<table id="customers">
+
+    <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Username</th>
+    </tr>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.Username)
+            </td>
+        </tr>
+    }
+</table>
+<div>
+    @{
+        string controller = this.ViewContext.RouteData.Values["controller"].ToString();
+        string action = this.ViewContext.RouteData.Values["action"].ToString();
+    }
+    @for (int i = 0; i < Model.Pager.PagesCount; i++)
+    {
+        <a class="@(Model.Pager.Page == (i + 1) ? "colored" : "")"
+           href="/@controller/@action?Pager.Page=@(i+1)&Pager.ItemsPerPage=@Model.Pager.ItemsPerPage">
+            @(i+1)
+        </a>
+    }
+    <script>
+                function PagingItems_OnChange() {
+
+                    let PagingItems = document.getElementById("PagingItems");
+
+                    document.location.href = "/@controller/@action?Pager.ItemsPerPage=" + PagingItems.value;
+                }
+    </script>
+
+</div>

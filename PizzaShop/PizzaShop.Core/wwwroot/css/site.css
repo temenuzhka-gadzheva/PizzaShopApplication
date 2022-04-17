@@ -185,8 +185,102 @@ h2 {
     text-align: center;
 }
 
+/*admin page*/
+#admin {
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+    #admin h1 {
+        text-align: center;
+        margin: 5px;
+        font-size: 40px;
+    }
+
+    #admin h2 {
+        text-align: center;
+        margin: 20px;
+    }
+
+.button {
+    background-color: #FFE8A7;
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+#welcome-admin div a {
+    text-decoration: none;
+    color: black;
+}
+
+    #welcome-admin div a:hover {
+        background-color: #FFC575;
+    }
+
+#welcome-admin {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+/*----------------------------*/
+
 .hero {
     margin: 30px;
     max-width: 600px;
 }
 
+#button-div {
+    padding-top: 10px;
+    width: 37%;
+    margin: auto;
+    display: flex;
+}
+/*-----------------------------*/
+/*user table */
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even) {
+        background-color: #f1f1f1;
+    }
+
+    #customers tr:hover {
+        background-color: #FFC575;
+    }
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #FFC575;
+        color: black;
+    }
+
+
+/*create btn*/
+.createbtn {
+    background-color: #FFC575;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+/*---------------------------------*/
