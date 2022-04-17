@@ -1,0 +1,33 @@
+﻿@model PizzaShop.Core.ViewModels.Home.LoginViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Login";
+}
+@using (Html.BeginForm())
+{
+    <section id="login">
+        <div class="container">
+            <form id="login-form" action="/Home/Login" method="post">
+                <h1>Login</h1>
+                <p>Please enter your credentials.</p>
+
+                <p>Username</p>
+                @Html.ValidationMessageFor(x => x.Username)
+                <input placeholder="Enter Username" name="username" type="text" value="@Html.DisplayFor(x => x.Username, new { @style = "field-validation-error" })">
+
+                <p>Password</p>
+                @Html.ValidationMessageFor(x => x.Password)
+                <input type="password" placeholder="Enter Password" name="password" value="@Html.DisplayFor(x => x.Password, new { @style = "field-validation-error" })">
+
+                <input type="submit" class="registerbtn" value="Login">
+            </form>
+            <div class="signin">
+                <p>
+                    Don`t have an account?
+                    <a href="/Home/Register">Sign up</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+}
+

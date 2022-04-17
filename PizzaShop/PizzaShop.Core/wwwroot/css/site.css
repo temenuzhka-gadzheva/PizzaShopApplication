@@ -1,0 +1,192 @@
+﻿* {
+    padding: 0;
+    margin: 0;
+}
+
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: /*#333333*/ #FFE8A7;
+    color: black;
+    text-align: center;
+    padding: 16px;
+}
+
+#container {
+    box-sizing: border-box;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 64px;
+}
+/*----------------*/
+/*navigation*/
+nav {
+    background-color: #FFE8A7;
+    overflow: hidden;
+}
+
+    nav a {
+        float: left;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+        nav a:hover {
+            text-decoration: none;
+            background-color:  #FFC575;
+            color: black;
+            text-decoration: none;
+        }
+
+        nav a.active {
+            text-decoration: none;
+            background-color: #FFC575;
+            color: black;
+            text-decoration: none;
+        }
+
+#profile, #guest {
+    float: right;
+}
+
+a:not([href]):not([tabindex]) {
+    color: black;
+    text-decoration: none;
+}
+/*----------------------------------*/
+
+/*----------*/
+/*login and register css*/
+/* Add padding to containers */
+.container {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    width: 1000px;
+    margin: auto;
+}
+
+p {
+    margin-bottom: 5px;
+}
+/* Full-width input fields */
+
+input[type="text"], input[type="number"], input[type="password"] {
+    padding: 5px;
+    margin: 5px 0 15px 0;
+    width: 100%;
+    border: none;
+    background: #f1f1f1;
+    box-sizing: border-box;
+}
+
+    input[type="text"]:focus, input[type="number"]:focus, input[type="password"]:focus {
+        background-color: #ddd;
+        outline: none;
+    }
+
+
+/*validation*/
+span {
+    color: red;
+}
+/* Overwrite default styles of hr */
+
+hr {
+    border: 1px solid #f1f1f1;
+}
+
+/* Set a style for the submit/register button */
+
+.registerbtn {
+    background-color: #FFC575;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+    .registerbtn:hover {
+        opacity: 1;
+    }
+
+/* Add a blue text color to links */
+a {
+    color: dodgerblue;
+}
+
+/* Set a grey background color and center the text of the "sign in" section */
+
+.signin {
+    padding: 12px;
+    background-color: #f1f1f1;
+    text-align: center;
+    margin: 5px 0 15px 0;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+}
+
+/*-----------------------*/
+
+/*home page*/
+
+#main {
+    background-color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    /* margin-top: 1px;*/
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.button {
+    background-color: #FFE8A7;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+#welcome-container div a {
+    text-decoration: none;
+    color: black;
+}
+
+    #welcome-container div a:hover {
+        background-color: #FFC575;
+    }
+
+#welcome-container {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+}
+
+.hero {
+    margin: 30px;
+    max-width: 600px;
+}
+

@@ -1,0 +1,43 @@
+﻿@model PizzaShop.Core.ViewModels.Home.RegisterViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Register";
+}
+
+@using (Html.BeginForm())
+{
+    <section id="register">
+        <div class="container">
+            <form id="register-form" action="/Home/Register" method="post">
+                <h1>Register</h1>
+                <p>Please fill in this form to create an account.</p>
+
+
+                <p>FirstName </p>
+                @Html.ValidationMessageFor(x => x.FirstName)
+                <input type="text" placeholder="Enter  first name" name="FirstName" required value="@Html.DisplayFor(x => x.FirstName, new { @style = "field-validation-error" })">
+                <p>LastName </p>
+                @Html.ValidationMessageFor(x => x.LastName)
+                <input type="text" placeholder="Enter  last name" name="LastName" required value="@Html.DisplayFor(x => x.LastName, new { @style = "field-validation-error" })">
+
+                <p>Username</p>
+                @Html.ValidationMessageFor(x => x.Username)
+                <input type="text" placeholder="Enter username" name="Username" required value="@Html.DisplayFor(x => x.Username, new { @style = "field-validation-error" })">
+
+                <p>Password</p>
+                @Html.ValidationMessageFor(x => x.Password)
+                <input type="password" placeholder="Enter password" name="Password" required value="">
+
+                <input type="submit" class="registerbtn" value="Register">
+            </form>
+            <div class="signin">
+                <p>
+                    Already have an account?
+                    <a href="/Home/Login">Sign in</a>.
+                </p>
+            </div>
+        </div>
+    </section>
+}
+
+

@@ -1,0 +1,68 @@
+﻿@using PizzaShop.Models.Models;
+@using PizzaShop.Core.SessionHelper;
+@{
+    User user = this.ViewContext.HttpContext.Session.GetObjectFromJson<User>("loggedUser");
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PizzaShop.Core</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div id="container">
+
+        <header id="navigation">
+            <nav>
+                <a class="active" href="/Home/Index">Pizza Shop</a>
+                @if (user == null)
+                {
+                    <a href="/Pizzas/All">Pizzas</a>
+                    <a href="/PizzaIngredients/Index">PizzaIngredients</a>
+                    <a href="/Reviews/Index">Reviews</a>
+                    <div id="guest">
+                        <a id="msg">Welcome,Annonymous</a>
+                        <a href="/Home/Login">Login</a>
+                        <a href="/Home/Register">Register</a>
+                    </div>
+                }
+                else if (user.Username == "admin" && user.Password == "admin123")
+                {
+                    <a href="/Reviews/Index">Reviews</a>
+                    <a href="/Orders/Index">Orders</a>
+                    <div id="profile">
+                        <a href="/Admin/Index">Admin page</a>
+                        <a id="msg">Welcome, Boss</a>
+                        <a href="/Home/Logout">Logout</a>
+                    </div>
+                }
+                else
+                {
+                    <a href="/Pizzas/All">Pizzas</a>
+                    <a href="/PizzaIngredients/Index">PizzaIngredients</a>
+                    <a href="/Reviews/Index">Reviews</a>
+                    <a href="/Cart/Index"><img src="https://cdn-icons-png.flaticon.com/512/925/925716.png" alt="Shopping cart" style="max-height: 25px" /></a>
+                    <div id="profile">
+                        <a id="msg">Welcome,@(user.Username)</a>
+                        <a href="/Home/Logout">Logout</a>
+                    </div>
+                }
+            </nav>
+        </header>
+
+        <main id="site-content">
+
+            @RenderBody()
+
+        </main>
+
+        <footer>
+            <p>&copy; All rights reserved</p>
+        </footer>
+    </div>
+</body>
+</html>
