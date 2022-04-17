@@ -1,0 +1,30 @@
+﻿
+@model PizzaShop.Core.ViewModels.Ingredients.EditViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Edit  Ingredient";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-horizontal">
+        <h4>Ingredient</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(x => x.Name)
+                @Html.LabelFor(x => x.Name)
+                <input type="text" placeholder="Enter ingredient name" name="name" required value="@Html.DisplayFor(x => x.Name, new { @style = "control-label col-md-2" })">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="createbtn" />
+            </div>
+        </div>
+    </div>
+}
