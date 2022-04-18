@@ -1,0 +1,71 @@
+﻿@model PizzaShop.Core.ViewModels.Pizzas.IndexViewModel
+@using PizzaShop.Models.Models;
+@using PizzaShop.Core.SessionHelper;
+@{
+    User user = this.ViewContext.HttpContext.Session.GetObjectFromJson<User>
+       ("loggedUser");
+}
+
+<h2> Our specialties </h2>
+
+@foreach (var item in Model.Pizzas)
+{
+    <div id="pizza">
+        <div class="product-details">
+
+            <h1>@item.Name</h1>
+            <p class="information">@item.Description</p>
+            <span class="category">Category: @item.Category.Name</span>
+
+            <div class="control">
+
+
+                @if (user != null && user.Username != "admin")
+                {<button class="btn">
+                        <span class="price">@item.Price</span>
+                        <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+
+                        <a asp-controller="cart" asp-action="buy" asp-route-id="@item.Id"> <span class="buy">Buy now</span></a>
+                    </button>
+                }
+                else
+                {
+                    <button class="btn">
+                        <span class="price">@item.Price</span>
+                        <span class="shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i></span>
+                        <a asp-controller="Home" asp-action="Register"
+                           onclick="return confirm('Тo purchase a pizza you must first be logged in or registered in our system!');"><span class="buy">Buy now</span></a>
+                    </button>
+                }
+
+            </div>
+        </div>
+        <div class="product-image">
+
+            <img src="@item.ImageUrl" alt="">
+        </div>
+    </div>
+}
+
+<div class="product-details">
+    @{
+        string controller = this.ViewContext.RouteData.Values["controller"].ToString();
+        string action = this.ViewContext.RouteData.Values["action"].ToString();
+    }
+    @for (int i = 0; i < Model.Pager.PagesCount; i++)
+    {
+        <a class="@(Model.Pager.Page == (i + 1) ? "colored" : "")"
+           href="/@controller/@action?Pager.Page=@(i+1)&Pager.ItemsPerPage=@Model.Pager.ItemsPerPage">
+            @(i+1)
+        </a>
+    }
+    <script>
+                 function PagingItems_OnChange() {
+
+                     let PagingItems = document.getElementById("PagingItems");
+
+                     document.location.href = "/@controller/@action?Pager.ItemsPerPage=" + PagingItems.value;
+                }
+    </script>
+
+</div>
