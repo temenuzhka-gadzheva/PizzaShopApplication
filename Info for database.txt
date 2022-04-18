@@ -1,0 +1,75 @@
+Categories: 
+1.Vegetarian => For the unloved meat
+2.Cheese => For cheese lovers
+3.Exotic fruits => For lovers of exotic fruits
+4.Meat => For meat lovers
+5.Sweet => For lovers of sweets
+
+Ingredients:
+1.Cheese
+2.Tomato souce
+3.Mashrooms
+4.Kebab
+5.Shripm
+6.Pineapple
+7.Ham
+8.Broccoli
+9.Onion
+10.Olives
+11.Bananas
+12.Cholocate
+13.Chicken
+14.Tomatoes
+15.Minced Meat
+16.Corn
+17.Basil
+18.Bacon
+19.Berries
+20.Cream
+21.Spinach
+22.Pepperoni
+23.Artichoke
+
+Pizzas:
+1.Pepperoni
+-- This Homemade Pepperoni Pizza has everything you want—a great crust,
+gooey cheese, and tons of pepperoni.
+-- https://sipbitego.com/wp-content/uploads/2021/08/Pepperoni-Pizza-Recipe-Sip-Bite-Go.jpg
+
+2.Margherita 
+-- That is a typical Neapolitan pizza, made with San Marzano tomatoes,
+ mozzarella cheese, fresh basil, salt, and extra-virgin olive oil.
+-- https://static.toiimg.com/thumb/56868564.cms?imgsize=1948751&width=800&height=800
+
+3.Hawaiian 
+--Hawaiian pizza is a type of pizza originating in Canada and is traditionally 
+topped with pineapple and either ham or bacon.
+--https://www.jessicagavin.com/wp-content/uploads/2020/07/hawaiian-pizza-16-1200.jpg
+
+4.Capricciosa 
+-- A style of pizza in Italian cuisine prepared 
+with mozzarella cheese, Italian baked ham, mushroom, artichoke and tomato.
+--https://www.silviocicchi.com/pizzachef/wp-content/uploads/2015/02/c-evid2.jpg
+
+5.Chocko
+-- Chocolate pizza is a type of pizza prepared using chocolate as a primary ingredient and berries
+-- https://izzycooking.com/wp-content/uploads/2021/02/Nutella-Pizza-thumbnail-500x500.jpg
+
+6.Gorgonzola
+-- Gorgonzola contains cream, mozzarella, caramelized onions, gorgonzola, fresh spinach
+--https://mammamia.bg/assets/uploads/products/thumbnails/c535b8d0ae22870f6ab7678dae70c674_500x500.jpg
+
+PizzaIngredients: 
+1.Pepperoni = cheese, pepperoni
+2.Margherita = tomatoes,cheese, basil, olive oil
+3.Hawaiian = ineapple,ham or bacon
+4.Capricciosa  = cheese,ham, mashrooms,artichoke,tomatoes
+5.Chocko = chocolate, bananas, pineapple, berries
+6.Gorgonzola =  cream, mozzarella, onion, gorgonzola, spinach
+
+User:
+Firstname => Admin
+Lastname => Admin
+Username => admin
+Password => admin123
+ 
