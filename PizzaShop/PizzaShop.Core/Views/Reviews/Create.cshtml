@@ -1,0 +1,56 @@
+﻿@model PizzaShop.Core.ViewModels.Reviews.CreateViewModel
+@using PizzaShop.Models.Models;
+@using PizzaShop.Core.SessionHelper;
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Review";
+    User user = this.ViewContext.HttpContext.Session.GetObjectFromJson<User>
+("loggedUser");
+}
+
+
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Reviews</h4>
+        <hr />
+        @Html.HiddenFor(x => x.OwnerId)
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Opinion" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Opinion" placeholder="enter opinion" required class="form-control" />
+                <span asp-validation-for="Opinion" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(x => x.PizzaId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <select name="PizzaId">
+                    @foreach (var item in Model.Pizzas)
+                    {
+                        <option value="@item.Id">
+                            @item.Name
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Owner" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Owner" value="@user.Username" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="createbtn" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,58 @@
+﻿
+@model PizzaShop.Core.ViewModels.Reviews.EditViewModel
+@using PizzaShop.Models.Models;
+@using PizzaShop.Core.SessionHelper;
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["title"] = "Edit Review";
+    User user = this.ViewContext.HttpContext.Session.GetObjectFromJson<User>
+("loggedUser");
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.Id)
+    <div class="form-horizontal">
+        <h4>Pizza</h4>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(x => x.Opinion)
+                @Html.LabelFor(x => x.Opinion)
+                <input type="text" placeholder="Enter opinion" name="opinion" required value="@Html.DisplayFor(x => x.Opinion, new { @class = "control-label col-md-2" })">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.LabelFor(x => x.PizzaId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <select name="PizzaId">
+                    @foreach (var item in Model.Pizzas)
+                    {
+                        <option value="@item.Id">
+                            @item.Name
+                        </option>
+                    }
+                </select>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationMessageFor(x => x.Owner)
+                @Html.LabelFor(x => x.Owner)
+                <input type="text" placeholder="Enter owner name" name="owner" required value="@Html.DisplayFor(x => user.Username, new { @class = "control-label col-md-2" })">
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Edit" class="createbtn" />
+            </div>
+        </div>
+    </div>
+}
+

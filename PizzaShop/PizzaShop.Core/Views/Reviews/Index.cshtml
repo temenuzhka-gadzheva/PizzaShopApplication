@@ -1,0 +1,95 @@
+﻿
+@model PizzaShop.Core.ViewModels.Reviews.IndexViewModel
+@using PizzaShop.Models.Models;
+@using PizzaShop.Core.SessionHelper;
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Reviews";
+    User user = this.ViewContext.HttpContext.Session.GetObjectFromJson<User>
+      ("loggedUser");
+
+}
+
+<h1>All Reviews</h1>
+<!--every logged user -->
+@if (user != null && user.Username != "admin" && user.Password != "admin123")
+{
+    <p> @Html.ActionLink("Create New Review", "Create") </p>
+}
+
+
+
+<table id="customers">
+
+    <tr>
+        <th>Pizza name</th>
+        <th>Opinion</th>
+        <th>Date</th>
+        <th>Owner name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var item in Model.Reviews)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(x => item.Pizza.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.Opinion)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.Owner.Username)
+            </td>
+            @if (user != null && user.Id == item.OwnerId && user.Username != "admin" && user.Password != "admin123")
+            {
+                <td>
+                    <a href="/Reviews/Edit?id=@item.Id">Edit</a>
+                </td>
+                <td>
+                    <a href="/Reviews/Delete?id=@item.Id"
+                       onclick="return confirm('Аre you sure you want to delete your review?');">Delete</a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <a href="#"
+                       onclick="return confirm('You are not owner of this review, so you are not edit this review!');">Edit</a>
+                </td>
+                <td>
+                    <a href="#"
+                       onclick="return confirm('You are  not owner of this review, so you are not delete this review!');">Delete</a>
+                </td>
+            }
+        </tr>
+    }
+</table>
+
+<div>
+    @{
+        string controller = this.ViewContext.RouteData.Values["controller"].ToString();
+        string action = this.ViewContext.RouteData.Values["action"].ToString();
+    }
+    @for (int i = 0; i < Model.Pager.PagesCount; i++)
+    {
+        <a class="@(Model.Pager.Page == (i + 1) ? "colored" : "")"
+           href="/@controller/@action?Pager.Page=@(i+1)&Pager.ItemsPerPage=@Model.Pager.ItemsPerPage">
+            @(i+1)
+        </a>
+    }
+    <script>
+                 function PagingItems_OnChange() {
+
+                     let PagingItems = document.getElementById("PagingItems");
+
+                     document.location.href = "/@controller/@action?Pager.ItemsPerPage=" + PagingItems.value;
+                }
+    </script>
+
+</div>
