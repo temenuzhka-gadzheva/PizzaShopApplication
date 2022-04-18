@@ -1,0 +1,30 @@
+﻿@model PizzaShop.Core.ViewModels.Orders.CreateViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "MakeOrder";
+
+}
+
+@using (Html.BeginForm())
+{
+    <section id="login">
+        <div class="container">
+            <form id="login-form" action="/Orders/MakeOrder" method="post">
+                <h1> Please enter your delivery details.</h1>
+                <hr>
+
+                <input placeholder="Enter Firstname" name="firstname" type="text" value="">
+
+                <input placeholder="Enter Lastname" name="lastname" type="text" value="">
+
+                <input placeholder="Enter Username" name="username" type="text" value="">
+
+                <input placeholder="Enter PhoneNumber" name="phonenumber" type="text" value="">
+
+                <input placeholder="Enter Address" name="address" type="text" value="">
+                <a asp-controller="Orders" asp-action="MakeOrder" class="registerbtn">Process Order</a>
+
+            </form>
+        </div>
+    </section>
+}

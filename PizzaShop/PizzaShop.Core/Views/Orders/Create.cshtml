@@ -1,0 +1,59 @@
+﻿@model PizzaShop.Core.ViewModels.Orders.CreateViewModel
+
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Create Order";
+
+}
+
+
+<h2>Create</h2>
+
+<form asp-action="Create">
+    <div class="form-horizontal">
+        <h4>Orders</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="CustomerFirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CustomerFirstName" required placeholder="Enter customer first name" class="form-control" />
+                <span asp-validation-for="CustomerFirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CustomerLastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CustomerLastName" required placeholder="Enter customer last name" class="form-control" />
+                <span asp-validation-for="CustomerLastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CustomerUsersname" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CustomerUsersname" required placeholder="Enter customer username" class="form-control" />
+                <span asp-validation-for="CustomerUsersname" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CustomerAddress" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CustomerAddress" required placeholder="Enter customer address" class="form-control" />
+                <span asp-validation-for="CustomerAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CustomerPhone" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="CustomerPhone" required placeholder="Enter customer phone number" style="background-color: #f1f1f1" class="form-control" />
+                <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <input type="submit" value="Process order" class="createbtn" />
+            </div>
+        </div>
+    </div>
+</form>

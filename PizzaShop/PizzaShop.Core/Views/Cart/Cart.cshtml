@@ -1,0 +1,57 @@
+﻿<div class="CartContainer">
+    <div class="Header">
+        <h1 class="Heading">Shopping Cart</h1>
+
+    </div>
+    @if (ViewBag.total == null)
+    {
+
+        <div class="Cart-Items">This shopping cart is empty!</div>
+    }
+    else
+    {
+
+        @foreach (var item in ViewBag.cart)
+        {
+            <div class="Cart-Items">
+                <div class="image-box">
+                    <!-----------------iamge url---------------->
+                    <img src="@item.Pizza.ImageUrl" style="max-height: 130px" />
+                </div>
+
+                <div class="about">
+                    <h3 class="title">@item.Pizza.Name</h3> <!--------PIZZANAME------------>
+                </div>
+                <div class="counter">
+                    <div class="count"> @(item.Quantity) count <!--------Quantity------------> </div>
+                </div>
+                <div class="prices">
+                    <div class="count">@(item.Pizza.Price)$</div>
+                    <!-----------PRICE------------------->
+                </div>
+                <div class="prices">
+                    <div class="amount"> @(item.Pizza.Price * item.Quantity)$</div>  <!-----------price * quantity------------------->
+                    <a asp-controller="cart"
+                       asp-action="remove"
+                       asp-route-id="@item.Pizza.Id" class="remove">Remove</a>
+                </div>
+            </div>
+        }
+    }
+    <div class="checkout">
+        <div class="total">
+            <div>
+                <div class="Subtotal">Sub-Total</div>
+                <div class="items">total sum</div>
+            </div>
+            <div class="total-amount"> @(ViewBag.total == null ? 0 :ViewBag.total)$</div> <!--------total sum------------>
+        </div>
+        @if (ViewBag.total > 0)
+        {
+            <button class="checkoutBtn">
+                <a asp-controller="Orders" asp-action="Create" class="checkoutBtn">Check Out</a>
+            </button>
+        }
+    </div>
+
+</div>

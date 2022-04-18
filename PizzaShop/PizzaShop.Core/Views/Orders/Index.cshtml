@@ -1,0 +1,74 @@
+﻿@model PizzaShop.Core.ViewModels.Orders.IndexViewModel
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Orders";
+
+}
+
+<h1>All Orders</h1>
+
+<table id="customers">
+
+    <tr>
+        <th> Customer first name</th>
+        <th> Customer last name</th>
+        <th> Customer  username</th>
+        <th> Customer address </th>
+        <th> Customer phone number</th>
+        <th> Order Date</th>
+    </tr>
+
+    @foreach (var item in Model.Orders)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => item.CustomerFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.CustomerLastName)
+
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.CustomerUsersname)
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.CustomerAddress)
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.CustomerPhone)
+
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.Date)
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    @{
+        string controller = this.ViewContext.RouteData.Values["controller"].ToString();
+        string action = this.ViewContext.RouteData.Values["action"].ToString();
+    }
+    @for (int i = 0; i < Model.Pager.PagesCount; i++)
+    {
+        <a class="@(Model.Pager.Page == (i + 1) ? "colored" : "")"
+           href="/@controller/@action?Pager.Page=@(i+1)&Pager.ItemsPerPage=@Model.Pager.ItemsPerPage">
+            @(i+1)
+        </a>
+    }
+    <script>
+                function  PagingItems_OnChange() {
+
+                    let PagingItems = document.getElementById(" PagingItems");
+
+                    document.location.href = "/@controller/@action?Pager.ItemsPerPage=" + PagingItems.value;
+                }
+    </script>
+
+</div>
