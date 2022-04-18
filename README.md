@@ -5,9 +5,9 @@
    For testing application, please use info for database.txt file :) 
    
    
-   🛠 Built with:
-    .NET 5
-    ASP.NET Core Web App(Model-View-Controller)
-    Entity Framework Core 5.0.16
-    MS SQL Server
+ # 🛠 Built with:
+  * .NET 5
+  * ASP.NET Core Web App(Model-View-Controller)
+  * Entity Framework Core 5.0.16
+  * MS SQL Server
     
