@@ -1,0 +1,75 @@
+﻿@model PizzaShop.Core.ViewModels.PizzaIngredients.IndexViewModel
+@using PizzaShop.Models.Models;
+@using PizzaShop.Core.SessionHelper;
+@{
+    this.Layout = "/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Pizza ingredients";
+    User user = this.ViewContext.HttpContext.Session.GetObjectFromJson<User>
+("loggedUser");
+}
+
+
+<h1>All Pizza ingredients</h1>
+@if (user != null && user.Username == "admin" && user.Password == "admin123")
+{
+    <p>
+        @Html.ActionLink("Create New Pizza Ingredient", "Create")
+    </p>
+}
+
+<table id="customers">
+
+    <tr>
+        <th>Ingredient name</th>
+        <th>Pizza name</th>
+        @if (user != null && user.Username == "admin" && user.Password == "admin123")
+        {
+            <th>Delete</th>
+        }
+    </tr>
+
+
+    @foreach (var item in Model.PizzaIngredients)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => item.Pizza.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(x => item.Ingredient.Name)
+            </td>
+            @if (user != null && user.Username == "admin" && user.Password == "admin123")
+            {
+
+                <td>
+                    <a href="/PizzaIngredients/Delete?id=@item.Id"
+                       onclick="return confirm('Аre you sure you want to delete this pizza ingredient?');">Delete</a>
+                </td>
+            }
+
+        </tr>
+    }
+</table>
+
+<div>
+    @{
+        string controller = this.ViewContext.RouteData.Values["controller"].ToString();
+        string action = this.ViewContext.RouteData.Values["action"].ToString();
+    }
+    @for (int i = 0; i < Model.Pager.PagesCount; i++)
+    {
+        <a class="@(Model.Pager.Page == (i + 1) ? "colored" : "")"
+           href="/@controller/@action?Pager.Page=@(i+1)&Pager.ItemsPerPage=@Model.Pager.ItemsPerPage">
+            @(i+1)
+        </a>
+    }
+    <script>
+                function  PagingItems_OnChange() {
+
+                    let PagingItems = document.getElementById("PagingItems");
+
+                    document.location.href = "/@controller/@action?Pager.ItemsPerPage=" + PagingItems.value;
+                }
+    </script>
+
+</div>
